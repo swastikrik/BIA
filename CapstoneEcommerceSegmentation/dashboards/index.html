@@ -84,7 +84,7 @@
 
       <section id="view-segments" class="view-panel" aria-labelledby="segments-title">
         <div class="section-head">
-          <div><h2 id="segments-title">Segment structure</h2><p class="section-sub">Cluster size and relative RFM patterns. Use the cluster IDs until profile labels are validated.</p></div>
+          <div><h2 id="segments-title">Segment structure</h2><p class="section-sub">Cluster size and relative RFM patterns, summarized with profile-derived names.</p></div>
           <span class="chart-tag">KMeans · k = <span id="selected-k">Loading</span></span>
         </div>
         <div class="mix">
@@ -106,7 +106,7 @@
             <div class="chart-head"><h3 class="chart-title">Relative segment profiles</h3><span class="chart-tag">RFM · native units</span></div>
             <label class="chart-tag" for="profile-metric">Metric <select id="profile-metric"><option value="Recency">Recency (days)</option><option value="Frequency">Frequency (invoices)</option><option value="Monetary">Monetary (£)</option></select></label>
             <div id="profile-chart" class="interactive-chart" role="img" aria-label="Interactive segment profile chart"></div>
-            <div class="chart-caption">Profile labels in the source image may repeat because naming is heuristic. The quantitative cluster IDs and sizes above remain the dependable summary.</div>
+            <div class="chart-caption">Names summarize each cluster's measured RFM profile; compare them with the means before acting.</div>
           </article>
           <article class="chart">
             <div class="chart-head"><h3 class="chart-title">RFM relationships</h3><span class="chart-tag">Correlation · unitless</span></div>

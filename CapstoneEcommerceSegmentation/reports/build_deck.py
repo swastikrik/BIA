@@ -1,5 +1,12 @@
 """Build the capstone presentation from the BIA template and the pipeline outputs.
 
+ARCHIVED: ``Capstone_Ecommerce_Segmentation.pptx`` is now the master copy and
+is edited directly in PowerPoint. This script records how the first version was
+generated. It never writes to the master deck; it saves a separate
+``Capstone_Ecommerce_Segmentation_rebuilt.pptx`` so manual edits are never lost.
+Use it only to regenerate charts from new pipeline outputs, then copy what you
+need into the master deck by hand.
+
 Usage, from the repository root after running ``main.py``::
 
 	python CapstoneEcommerceSegmentation/reports/build_deck.py
@@ -30,7 +37,9 @@ from pptx.util import Emu, Inches, Pt
 REPORTS = Path(__file__).resolve().parent
 PROJECT = REPORTS.parent
 TEMPLATE = REPORTS / "Capstone PPT Template.pptx"
-OUT = REPORTS / "Capstone_Ecommerce_Segmentation.pptx"
+MASTER = REPORTS / "Capstone_Ecommerce_Segmentation.pptx"
+OUT = REPORTS / "Capstone_Ecommerce_Segmentation_rebuilt.pptx"
+assert OUT != MASTER, "never overwrite the hand-edited master deck"
 DASH_PNG = REPORTS / "dashboard_screenshot.png"
 
 dash = json.loads((PROJECT / "outputs" / "dashboard_data.json").read_text())

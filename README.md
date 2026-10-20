@@ -1,157 +1,50 @@
-# BIA — Business Intelligence & Analytics
+# BIA — Data Science & AI Projects
 
-Machine learning and data science learning projects.
+Projects from my Diploma in Data Science & AI at Boston Institute of Analytics, Kolkata.
 
 ## Projects
 
-### 1. MachineLearningIntroduction
-**Simple Linear Regression Model for Housing Price Prediction**
+| Project | What it does | Techniques | Dataset |
+| --- | --- | --- | --- |
+| [Capstone](./CapstoneEcommerceSegmentation/) | Segments retail customers by purchasing behavior. | RFM, K-Means, hierarchical clustering, DBSCAN, Random Forest | Online Retail (`data/data.csv`; source provenance TODO) |
+| [AdvancedNLP](./AdvancedNLP/) | Classifies IMDB reviews as positive or negative. | LSTM, local GloVe embeddings, tokenization | `IMDB.csv`, `glove.txt` |
+| [DecisionTreesEnsembleMethods](./DecisionTreesEnsembleMethods/) | Classifies Iris species. | Decision Tree; optional Random Forest | Iris CSV |
+| [DeepLearning](./DeepLearning/) | Classifies images into ten categories. | Convolutional neural network | CIFAR-10 via Keras |
+| [DimensionalityReductionFeatureSelection](./DimensionalityReductionFeatureSelection/) | Compares two Iris classification workflows. | PCA, interaction feature, Random Forest | Iris CSV |
+| [LogisticRegressionClassificationMetrics](./LogisticRegressionClassificationMetrics/) | Classifies Titanic survival. | Logistic regression, imputation, outlier capping, one-hot encoding | `titanic.csv` |
+| [MachineLearningIntroduction](./MachineLearningIntroduction/) | Predicts housing prices. | Simple linear regression, preprocessing, evaluation | Custom housing CSV |
+| [ModelEvaluationValidationTechniques](./ModelEvaluationValidationTechniques/) | Classifies Apple stock price direction. | Random Forest, GridSearchCV, cross-validation | Apple stock CSV |
+| [MultipleLinearRegressionModelEvaluation](./MultipleLinearRegressionModelEvaluation/) | Predicts vehicle fuel economy (`mpg`). | Multiple linear regression, preprocessing, regression metrics | `car_mileage_dataset.csv` |
+| [NLP](./NLP/) | Classifies IMDB reviews as positive or negative. | Embedding, Flatten, Dense neural network | `IMDB.csv` |
+| [RNNandLSTMDeeplearningmodels](./RNNandLSTMDeeplearningmodels/) | Predicts stock closing prices from preceding trading days. | RNN and LSTM | `Stock_price.csv` |
+| [SVM-KNN](./SVM-KNN/) | Compares Iris classification models. | Linear SVM, 3-neighbor KNN | Iris CSV |
+| [TimeSeriesModeling](./TimeSeriesModeling/) | Forecasts monthly rainfall for the Auser aquifer series. | ARIMA, chronological holdout | Auser aquifer CSV |
+| [UnsupervisedLearning](./UnsupervisedLearning/) | Clusters wholesale customers by spending features. | K-Means, agglomerative clustering, elbow method, silhouette score | Wholesale customers CSV |
 
-A comprehensive introduction to the machine learning pipeline covering data exploration, preprocessing, model training, and evaluation.
+## Capstone highlights
 
-- **Techniques:** Exploratory Data Analysis (EDA), Data Preprocessing, Feature Scaling, Linear Regression, Model Evaluation
-- **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
-- **Dataset:** 128 housing records (125 after cleaning)
-- **Performance:** R² = 0.7928 (79.28% variance explained), MAE = $9,165, RMSE = $11,548
+- Modular Python package: `data_loader`, `preprocessing`, `features`, `clustering`, `classifier`, `evaluation`, `visualization`, and `main`; analysis and dashboard data are exported as JSON.
+- RFM features are log-transformed and scaled. Monetary skewness is 20.3 before and 0.4 after `log1p` on the bundled data. TODO: the requested pre-transform value 20.4 does not match the measured 20.3.
+- K-Means is evaluated for k=2–10; k=2 is selected at silhouette 0.431, and k=4 is documented as an alternative. TODO: the three-algorithm comparison is run at selected k and k=4, not for every k from 2–10.
+- Stability uses 20 seed refits and 20 bootstrap refits; mean ARIs are 0.994 and 0.989.
+- A 200-tree Random Forest predicts K-Means segment membership from RFM features.
 
-**Quick Start:**
-```bash
-cd MachineLearningIntroduction
-python main.py
-```
+## How to run
 
-**Full Documentation:** [MachineLearningIntroduction/README.md](MachineLearningIntroduction/README.md)
+Create and activate a virtual environment, install the repository dependencies, then enter a project and run its entry point:
 
----
-
-## Getting Started
-
-### Prerequisites
-- Python 3.13 (64-bit)
-- Git
-- GitHub account
-
-### Setup GitHub Credentials
-
-1. **Create a GitHub Personal Access Token:**
-   - Go to [GitHub Settings → Personal Access Tokens](https://github.com/settings/tokens)
-   - Click **Generate new token**
-   - Select scope: `repo` (full control of private repositories)
-   - Copy the token (you won't be able to see it again!)
-
-2. **Configure local `.env` file:**
-   ```bash
-   # Copy template
-   cp .env.example .env
-   
-   # Edit .env with your credentials
-   # (Windows) Notepad .env
-   # (Linux/Mac) nano .env
-   ```
-
-3. **Fill in `.env`:**
-   ```bash
-   GITHUB_USERNAME=your_username
-   GITHUB_TOKEN=your_personal_access_token
-   GITHUB_REPO=BIA
-   ```
-
-**⚠️ Security:** The `.env` file is in `.gitignore` and will NEVER be committed to GitHub. Keep your credentials safe!
-
-### Clone & Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/BIA.git
-cd BIA
-
-# Create the single project-level virtual environment
-py -3.13 -m venv .venv-1
-.\.venv-1\Scripts\Activate.ps1
-
-# Install all repository dependencies
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-
-# Navigate to and run a project
-cd MachineLearningIntroduction
+cd CapstoneEcommerceSegmentation
 python main.py
 ```
 
----
-
-## Project Structure
-
-```
-BIA/
-├── README.md                          (this file)
-├── LICENSE                            (MIT License)
-├── .gitignore                         (Python .gitignore)
-│
-└── MachineLearningIntroduction/
-    ├── README.md                      (Project documentation)
-    ├── requirements.txt               (Project dependencies)
-    ├── main.py                        (Entry point)
-    ├── data_loader.py                 (Data loading & inspection)
-    ├── preprocessing.py               (Feature engineering & scaling)
-    ├── eda.py                         (Exploratory data analysis)
-    ├── model.py                       (Model training & evaluation)
-    │
-    └── data/
-        └── housing_dataset.csv        (Dataset)
-```
-
----
-
-## Future Projects
-
-Additional ML/data science projects will be added to this repository:
-- Advanced Regression Models (Polynomial, Ridge, Lasso)
-- Classification Models (Logistic Regression, Decision Trees)
-- Time Series Forecasting
-- Clustering & Unsupervised Learning
-- Natural Language Processing
-- Deep Learning
-
----
-
-## Technologies
-
-- **Data Processing:** Pandas, NumPy
-- **Machine Learning:** Scikit-learn
-- **Visualization:** Matplotlib, Seaborn
-- **Environment:** Python 3.13, project-level `.venv-1`
-
----
-
-## Learning Objectives
-
-This repository demonstrates:
-- ✓ End-to-end ML pipeline development
-- ✓ Data exploration & visualization
-- ✓ Data preprocessing & feature engineering
-- ✓ Model training & evaluation
-- ✓ Metric interpretation
-- ✓ Code documentation & organization
-- ✓ Best practices in machine learning
-
----
+For the capstone, start at `main.py` — the notebook is a short runner over the modules. For another project, change into its folder and follow its README if it requires additional arguments.
 
 ## License
 
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License; see [LICENSE](LICENSE) for details.
 
----
-
-## Contributing
-
-This is a personal learning repository. Feedback and suggestions are welcome!
-
----
-
-## Contact
-
-For questions or discussions about these projects, feel free to reach out.
-
----
-
-**Last Updated:** 2026-07-20
+**Last Updated:** 2026-10-18
