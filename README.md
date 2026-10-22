@@ -24,8 +24,8 @@ Projects from my Diploma in Data Science & AI at Boston Institute of Analytics, 
 ## Capstone highlights
 
 - Modular Python package: `data_loader`, `preprocessing`, `features`, `clustering`, `classifier`, `evaluation`, `visualization`, and `main`; analysis and dashboard data are exported as JSON.
-- RFM features are log-transformed and scaled. Monetary skewness is 20.3 before and 0.4 after `log1p` on the bundled data. TODO: the requested pre-transform value 20.4 does not match the measured 20.3.
-- K-Means is evaluated for k=2–10; k=2 is selected at silhouette 0.431, and k=4 is documented as an alternative. TODO: the three-algorithm comparison is run at selected k and k=4, not for every k from 2–10.
+- RFM features are log-transformed and scaled. Monetary skewness is 20.3 before and 0.4 after `log1p` on the bundled data.
+- K-Means is evaluated for k=2–10; k=2 is selected at silhouette 0.431, and k=4 is documented as an alternative. The three clustering algorithms are compared at k = 2 and 4.
 - Stability uses 20 seed refits and 20 bootstrap refits; mean ARIs are 0.994 and 0.989.
 - A 200-tree Random Forest predicts K-Means segment membership from RFM features.
 
